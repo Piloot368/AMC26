@@ -25,7 +25,7 @@ public class HelloApplication extends Application {
     public Pane pane = new Pane();
     public Scene scene = new Scene(pane, WIDTH, HEIGHT);
     public Pane qstPane = new Pane();
-    public GameController controller = new GameController();
+    public GameController controller = new GameController(this);
     public StreakManager streakManager = new StreakManager(Path.of("src/main/resources/infos.json"));
 
     public Plan currentPlan = Plan.ACCUEIL;
@@ -106,11 +106,12 @@ public class HelloApplication extends Application {
 
     public void questionMenu() {
         controller.nextQuestion();
-        pane.getChildren().clear();
-        qstPane.getChildren().clear();
+        if(currentPlan == Plan.GAMEPLAY){
+            pane.getChildren().clear();
+            qstPane.getChildren().clear();
 
-        String theme = controller.getTheme();
-        Image background = getRightBackground(theme);
+            String theme = controller.getTheme();
+            Image background = getRightBackground(theme);
 
             BackgroundImage backgroundImage = new BackgroundImage(background,
                     BackgroundRepeat.NO_REPEAT,
@@ -121,31 +122,32 @@ public class HelloApplication extends Application {
 
             pane.setBackground(new Background(backgroundImage));
 
-        Button button = new Button("<-");
-        button.setOnAction(event -> {
-            loadNewPlan(Plan.ACCUEIL);
-        });
+            Button button = new Button("<-");
+            button.setOnAction(event -> {
+                loadNewPlan(Plan.ACCUEIL);
+            });
+            pane.getChildren().add(button);
 
-        HBox hBoxTheme = new HBox();
-        hBoxTheme.setLayoutY(50);
-        hBoxTheme.setPrefWidth(WIDTH);
-        hBoxTheme.setAlignment(Pos.CENTER);
-        Label lTheme = new Label(theme);
-        lTheme.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        hBoxTheme.getChildren().add(lTheme);
-        qstPane.getChildren().add(hBoxTheme);
+            HBox hBoxTheme = new HBox();
+            hBoxTheme.setLayoutY(50);
+            hBoxTheme.setPrefWidth(WIDTH);
+            hBoxTheme.setAlignment(Pos.CENTER);
+            Label lTheme = new Label(theme);
+            lTheme.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+            hBoxTheme.getChildren().add(lTheme);
+            qstPane.getChildren().add(hBoxTheme);
 
-        HBox hBoxStatement = new HBox();
-        hBoxStatement.setLayoutY(100);
-        hBoxStatement.setPrefWidth(WIDTH);
-        hBoxStatement.setAlignment(Pos.CENTER);
-        Label lStatement = new Label(controller.getStatement());
-        lStatement.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 12));
-        lStatement.setMaxWidth(WIDTH-40);
-        lStatement.setWrapText(true);
-        lStatement.setTextFill(Color.CHOCOLATE);
-        hBoxStatement.getChildren().add(lStatement);
-        qstPane.getChildren().add(hBoxStatement);
+            HBox hBoxStatement = new HBox();
+            hBoxStatement.setLayoutY(100);
+            hBoxStatement.setPrefWidth(WIDTH);
+            hBoxStatement.setAlignment(Pos.CENTER);
+            Label lStatement = new Label(controller.getStatement());
+            lStatement.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 12));
+            lStatement.setMaxWidth(WIDTH-40);
+            lStatement.setWrapText(true);
+            lStatement.setTextFill(Color.CHOCOLATE);
+            hBoxStatement.getChildren().add(lStatement);
+            qstPane.getChildren().add(hBoxStatement);
 
             HBox hBoxBtns = new HBox(50);
             hBoxBtns.setLayoutY(250);
@@ -164,7 +166,8 @@ public class HelloApplication extends Application {
             hBoxBtns.getChildren().addAll(btnVrai, btnMythe);
             qstPane.getChildren().add(hBoxBtns);
 
-        pane.getChildren().addAll(button, qstPane);
+            pane.getChildren().add(qstPane);
+        }
     }
 
     private void clickButton(HBox hBoxBtns, Button btnVrai, Button btnMythe, Label lStatement, boolean buttonValue) {
@@ -201,6 +204,7 @@ public class HelloApplication extends Application {
     }
 
     public void options() {
+        streakManager.recordAnsweredToday();
         HBox hBox = new HBox();
         hBox.setPrefSize(WIDTH, HEIGHT);
         hBox.setAlignment(Pos.CENTER);
