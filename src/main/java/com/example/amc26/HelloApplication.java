@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
 
@@ -53,13 +55,16 @@ public class HelloApplication extends Application {
         HBox hBox = new HBox();
         hBox.setPrefSize(WIDTH, HEIGHT);
         hBox.setAlignment(Pos.CENTER);
+
             VBox vBox = new VBox();
             vBox.setPrefSize(WIDTH, HEIGHT);
             vBox.setAlignment(Pos.CENTER);
+
                 Button button = new Button("Lancer le quiz !");
                 button.setOnAction(event -> {
                     loadNewPlan(Plan.GAMEPLAY);
                 });
+
             vBox.getChildren().add(button);
         hBox.getChildren().add(vBox);
         pane.getChildren().add(hBox);
@@ -69,8 +74,20 @@ public class HelloApplication extends Application {
         pane.getChildren().remove(qstPane);
         qstPane.getChildren().clear();
 
-        Label label = new Label(controller.getTheme());
-        qstPane.getChildren().add(label);
+        Button button = new Button("<-");
+        button.setOnAction(event -> {
+            loadNewPlan(Plan.ACCUEIL);
+        });
+        pane.getChildren().add(button);
+
+        HBox hBox = new HBox();
+        hBox.setLayoutY(100);
+        hBox.setPrefWidth(WIDTH);
+        hBox.setAlignment(Pos.CENTER);
+            Label label = new Label(controller.getTheme());
+            label.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        hBox.getChildren().add(label);
+        qstPane.getChildren().add(hBox);
 
         pane.getChildren().add(qstPane);
     }
