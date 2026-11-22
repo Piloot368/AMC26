@@ -95,14 +95,42 @@ public class HelloApplication extends Application {
         });
         pane.getChildren().add(button);
 
-        HBox hBox = new HBox();
-        hBox.setLayoutY(100);
-        hBox.setPrefWidth(WIDTH);
-        hBox.setAlignment(Pos.CENTER);
-            Label label = new Label(controller.getTheme());
-            label.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        hBox.getChildren().add(label);
-        qstPane.getChildren().add(hBox);
+        HBox hBoxTheme = new HBox();
+        hBoxTheme.setLayoutY(50);
+        hBoxTheme.setPrefWidth(WIDTH);
+        hBoxTheme.setAlignment(Pos.CENTER);
+            Label lTheme = new Label(controller.getTheme());
+            lTheme.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        hBoxTheme.getChildren().add(lTheme);
+        qstPane.getChildren().add(hBoxTheme);
+
+        HBox hBoxStatement = new HBox();
+        hBoxStatement.setLayoutY(100);
+        hBoxStatement.setPrefWidth(WIDTH);
+        hBoxStatement.setAlignment(Pos.CENTER);
+            Label lStatement = new Label(controller.getQuestion());
+            lStatement.setFont(Font.font(12));
+            lStatement.setMaxWidth(WIDTH-20);
+            lStatement.setWrapText(true);
+        hBoxStatement.getChildren().add(lStatement);
+        qstPane.getChildren().add(hBoxStatement);
+
+        HBox hBoxBtns = new HBox(50);
+        hBoxBtns.setLayoutY(250);
+        hBoxBtns.setPrefWidth(WIDTH);
+        hBoxBtns.setAlignment(Pos.CENTER);
+            Button btnVrai = new Button("Vrai");
+            btnVrai.setPrefSize(100, 75);
+            btnVrai.setOnAction(event -> {
+                ///TODO
+            });
+            Button btnMythe = new Button("Mythe");
+            btnMythe.setPrefSize(100, 75);
+            btnMythe.setOnAction(event -> {
+                ///TODO
+            });
+        hBoxBtns.getChildren().addAll(btnVrai, btnMythe);
+        qstPane.getChildren().add(hBoxBtns);
 
         pane.getChildren().add(qstPane);
     }
