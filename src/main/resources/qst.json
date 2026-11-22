@@ -36,6 +36,13 @@
   },
   {
     "id": 3,
+    "theme": "Mobilité",
+    "statement": "Les stations BIXI à Montréal sont disponibles et en service toute l'année, même au cœur de l'hiver.",
+    "isTrue": false,
+    "fact": "Le service régulier de vélos en libre-service BIXI est saisonnier (généralement d'avril à novembre), bien qu'un projet pilote hivernal existe dans certains secteurs ciblés."
+  },
+  {
+    "id": 1,
     "theme": "Quartier & Écologie",
     "statement": "Les ruelles vertes à Montréal sont créées uniquement par la Ville, sans implication des citoyens.",
     "isTrue": false,
@@ -70,84 +77,84 @@
     "fact": "Une grande partie de la vitalité culturelle de Montréal se vit à l'année dans les arrondissements : bibliothèques, maisons de la culture, petites salles, parcs, ruelles et cafés de quartier."
   },
   {
-    "id": 2,
-    "theme": "Hiver",
-    "statement": "Au Québec, les pneus d'hiver sont obligatoires sur les véhicules de promenade immatriculés au Québec du 1er décembre au 15 mars.",
-    "isTrue": true,
-    "fact": "Cette obligation s'applique à la majorité des véhicules de promenade et taxis immatriculés au Québec durant cette période hivernale."
-  },
-  {
     "id": 3,
-    "theme": "Hiver",
-    "statement": "Pousser la neige de son entrée privée directement dans la rue après le passage de la déneigeuse est autorisé tant qu'on laisse passer les autos.",
-    "isTrue": false,
-    "fact": "Rejeter la neige de son terrain sur la voie publique ou les trottoirs est interdit : cela gêne la circulation, crée des plaques de glace et nuit aux opérations de déneigement."
-  },
-  {
-    "id": 1,
-    "theme": "Hiver",
-    "statement": "En hiver, les escaliers extérieurs métalliques en colimaçon typiques des plex montréalais nécessitent une attention particulière en raison du verglas.",
-    "isTrue": true,
-    "fact": "Emblématiques de l'architecture des quartiers montréalais, ces escaliers extérieurs glissent rapidement par temps de verglas : utiliser les rampes et dégager la glace prévient bien des chutes."
-  },
-  {
-    "id": 2,
-    "theme": "Mobilité",
-    "statement": "À Montréal, les autobus de la STM ont tous un support à vélo à l'avant à l'année longue.",
-    "isTrue": false,
-    "fact": "Les supports à vélo sur les autobus de la STM sont généralement installés de façon saisonnière (du printemps à l'automne) et retirés pour l'hiver."
-  },
-  {
-    "id": 3,
-    "theme": "Mobilité",
-    "statement": "Dans plusieurs rues résidentielles de Montréal, la limite de vitesse est de 40 km/h, voire 30 km/h ou 20 km/h dans certaines zones apaisées ou scolaires.",
-    "isTrue": true,
-    "fact": "Réduire la vitesse dans les quartiers résidentiels et près des écoles diminue fortement la gravité des collisions avec les piétons et les cyclistes."
-  },
-  {
-    "id": 1,
-    "theme": "Mobilité",
-    "statement": "À Montréal, le virage à droite au feu rouge est permis partout sur l'île, comme ailleurs au Québec.",
-    "isTrue": false,
-    "fact": "Contrairement au reste du Québec où le virage à droite au feu rouge est permis sauf indication contraire, il demeure interdit sur l'ensemble de l'île de Montréal."
-  },
-  {
-    "id": 2,
-    "theme": "Quartier & Écologie",
-    "statement": "Dans plusieurs arrondissements de Montréal, la collecte des matières organiques (résidus alimentaires) est distincte de celle des ordures ménagères.",
-    "isTrue": true,
-    "fact": "Trier les résidus alimentaires permet de réduire le volume des déchets enfouis et de diminuer les émissions de gaz à effet de serre liées à leur décomposition."
-  },
-  {
-    "id": 3,
-    "theme": "Quartier & Écologie",
-    "statement": "Les îlots de chaleur urbains sont généralement plus marqués dans les secteurs très minéralisés et asphaltés que dans les parcs ou rues bordées d'arbres.",
-    "isTrue": true,
-    "fact": "L'asphalte et le béton emmagasinent la chaleur, alors que la canopée, la végétation et les espaces verts aident à rafraîchir le quartier lors des chaudes journées d'été."
-  },
-  {
-    "id": 1,
-    "theme": "Quartier & Écologie",
-    "statement": "Installer un baril de récupération d'eau de pluie sur une gouttière aide uniquement à arroser les plantes, sans impact sur le réseau d'égout.",
-    "isTrue": false,
-    "fact": "En plus d'économiser l'eau potable pour l'arrosage, retenir l'eau de pluie sur place réduit le débit envoyé vers les égouts lors des fortes pluies."
-  },
-  {
-    "id": 2,
     "theme": "Culture & Quotidien",
     "statement": "Le mont Royal est un ancien volcan encore actif qui pourrait entrer en éruption.",
     "isTrue": false,
     "fact": "Le mont Royal est une colline d'origine ignée (intrusive) formée il y a environ 125 millions d'années : il n'est pas un volcan actif prêt à entrer en éruption."
   },
   {
+    "id": 1,
+    "theme": "Hiver",
+    "statement": "Au Québec, les pneus d'hiver sont obligatoires sur les véhicules de promenade immatriculés au Québec du 1er décembre au 15 mars.",
+    "isTrue": true,
+    "fact": "Cette obligation s'applique à la majorité des véhicules de promenade et taxis immatriculés au Québec durant cette période hivernale."
+  },
+  {
+    "id": 2,
+    "theme": "Hiver",
+    "statement": "Pousser la neige de son entrée privée directement dans la rue après le passage de la déneigeuse est autorisé tant qu'on laisse passer les autos.",
+    "isTrue": false,
+    "fact": "Rejeter la neige de son terrain sur la voie publique ou les trottoirs est interdit : cela gêne la circulation, crée des plaques de glace et nuit aux opérations de déneigement."
+  },
+  {
     "id": 3,
+    "theme": "Hiver",
+    "statement": "En hiver, les escaliers extérieurs métalliques en colimaçon typiques des plex montréalais nécessitent une attention particulière en raison du verglas.",
+    "isTrue": true,
+    "fact": "Emblématiques de l'architecture des quartiers montréalais, ces escaliers extérieurs glissent rapidement par temps de verglas : utiliser les rampes et dégager la glace prévient bien des chutes."
+  },
+  {
+    "id": 1,
+    "theme": "Mobilité",
+    "statement": "À Montréal, les autobus de la STM ont tous un support à vélo à l'avant à l'année longue.",
+    "isTrue": false,
+    "fact": "Les supports à vélo sur les autobus de la STM sont généralement installés de façon saisonnière (du printemps à l'automne) et retirés pour l'hiver."
+  },
+  {
+    "id": 2,
+    "theme": "Mobilité",
+    "statement": "Dans plusieurs rues résidentielles de Montréal, la limite de vitesse est de 40 km/h, voire 30 km/h ou 20 km/h dans certaines zones apaisées ou scolaires.",
+    "isTrue": true,
+    "fact": "Réduire la vitesse dans les quartiers résidentiels et près des écoles diminue fortement la gravité des collisions avec les piétons et les cyclistes."
+  },
+  {
+    "id": 3,
+    "theme": "Mobilité",
+    "statement": "À Montréal, le virage à droite au feu rouge est permis partout sur l'île, comme ailleurs au Québec.",
+    "isTrue": false,
+    "fact": "Contrairement au reste du Québec où le virage à droite au feu rouge est permis sauf indication contraire, il demeure interdit sur l'ensemble de l'île de Montréal."
+  },
+  {
+    "id": 1,
+    "theme": "Quartier & Écologie",
+    "statement": "Dans plusieurs arrondissements de Montréal, la collecte des matières organiques (résidus alimentaires) est distincte de celle des ordures ménagères.",
+    "isTrue": true,
+    "fact": "Trier les résidus alimentaires permet de réduire le volume des déchets enfouis et de diminuer les émissions de gaz à effet de serre liées à leur décomposition."
+  },
+  {
+    "id": 2,
+    "theme": "Quartier & Écologie",
+    "statement": "Les îlots de chaleur urbains sont généralement plus marqués dans les secteurs très minéralisés et asphaltés que dans les parcs ou rues bordées d'arbres.",
+    "isTrue": true,
+    "fact": "L'asphalte et le béton emmagasinent la chaleur, alors que la canopée, la végétation et les espaces verts aident à rafraîchir le quartier lors des chaudes journées d'été."
+  },
+  {
+    "id": 3,
+    "theme": "Quartier & Écologie",
+    "statement": "Installer un baril de récupération d'eau de pluie sur une gouttière aide uniquement à arroser les plantes, sans impact sur le réseau d'égout.",
+    "isTrue": false,
+    "fact": "En plus d'économiser l'eau potable pour l'arrosage, retenir l'eau de pluie sur place réduit le débit envoyé vers les égouts lors des fortes pluies."
+  },
+  {
+    "id": 1,
     "theme": "Culture & Quotidien",
     "statement": "Le réseau du métro de Montréal circule entièrement sur des pneus en caoutchouc, ce qui le rend plus silencieux et plus apte à gravir des pentes.",
     "isTrue": true,
     "fact": "Inspiré du métro de Paris, le métro de Montréal utilise des pneus sur voies de roulement, une caractéristique notable depuis son inauguration en 1966."
   },
   {
-    "id": 1,
+    "id": 2,
     "theme": "Culture & Quotidien",
     "statement": "Les bibliothèques publiques de Montréal offrent uniquement des livres papier et ne prêtent aucun outil numérique ou objet.",
     "isTrue": false,
@@ -155,9 +162,93 @@
   },
   {
     "id": 3,
-    "theme": "Mobilité",
-    "statement": "Les stations BIXI à Montréal sont disponibles et en service toute l'année, même au cœur de l'hiver.",
+    "theme": "Culture & Quotidien",
+    "statement": "Le RÉSO (la ville souterraine de Montréal) relie plusieurs stations de métro, centres commerciaux, édifices et lieux culturels au centre-ville.",
+    "isTrue": true,
+    "fact": "Avec des dizaines de kilomètres de passages intérieurs, le RÉSO permet de se déplacer à l'abri des intempéries hivernales entre plusieurs pôles du centre-ville."
+  },
+  {
+    "id": 1,
+    "theme": "Hiver",
+    "statement": "Au Québec, les pneus d'hiver sont obligatoires sur les véhicules de promenade immatriculés au Québec du 1er décembre au 15 mars.",
+    "isTrue": true,
+    "fact": "Cette obligation s'applique à la majorité des véhicules de promenade et taxis immatriculés au Québec durant cette période hivernale."
+  },
+  {
+    "id": 2,
+    "theme": "Hiver",
+    "statement": "Pousser la neige de son entrée privée directement dans la rue après le passage de la déneigeuse est autorisé tant qu'on laisse passer les autos.",
     "isTrue": false,
-    "fact": "Le service régulier de vélos en libre-service BIXI est saisonnier (généralement d'avril à novembre), bien qu'un projet pilote hivernal existe dans certains secteurs ciblés."
+    "fact": "Rejeter la neige de son terrain sur la voie publique ou les trottoirs est interdit : cela gêne la circulation, crée des plaques de glace et nuit aux opérations de déneigement."
+  },
+  {
+    "id": 3,
+    "theme": "Hiver",
+    "statement": "En hiver, les escaliers extérieurs métalliques en colimaçon typiques des plex montréalais nécessitent une attention particulière en raison du verglas.",
+    "isTrue": true,
+    "fact": "Emblématiques de l'architecture des quartiers montréalais, ces escaliers extérieurs glissent rapidement par temps de verglas : utiliser les rampes et dégager la glace prévient bien des chutes."
+  },
+  {
+    "id": 1,
+    "theme": "Mobilité",
+    "statement": "À Montréal, les autobus de la STM ont tous un support à vélo à l'avant à l'année longue.",
+    "isTrue": false,
+    "fact": "Les supports à vélo sur les autobus de la STM sont généralement installés de façon saisonnière (du printemps à l'automne) et retirés pour l'hiver."
+  },
+  {
+    "id": 2,
+    "theme": "Mobilité",
+    "statement": "Dans plusieurs rues résidentielles de Montréal, la limite de vitesse est de 40 km/h, voire 30 km/h ou 20 km/h dans certaines zones apaisées ou scolaires.",
+    "isTrue": true,
+    "fact": "Réduire la vitesse dans les quartiers résidentiels et près des écoles diminue fortement la gravité des collisions avec les piétons et les cyclistes."
+  },
+  {
+    "id": 3,
+    "theme": "Mobilité",
+    "statement": "À Montréal, le virage à droite au feu rouge est permis partout sur l'île, comme ailleurs au Québec.",
+    "isTrue": false,
+    "fact": "Contrairement au reste du Québec où le virage à droite au feu rouge est permis sauf indication contraire, il demeure interdit sur l'ensemble de l'île de Montréal."
+  },
+  {
+    "id": 1,
+    "theme": "Quartier & Écologie",
+    "statement": "Dans plusieurs arrondissements de Montréal, la collecte des matières organiques (résidus alimentaires) est distincte de celle des ordures ménagères.",
+    "isTrue": true,
+    "fact": "Trier les résidus alimentaires permet de réduire le volume des déchets enfouis et de diminuer les émissions de gaz à effet de serre liées à leur décomposition."
+  },
+  {
+    "id": 2,
+    "theme": "Quartier & Écologie",
+    "statement": "Les îlots de chaleur urbains sont généralement plus marqués dans les secteurs très minéralisés et asphaltés que dans les parcs ou rues bordées d'arbres.",
+    "isTrue": true,
+    "fact": "L'asphalte et le béton emmagasinent la chaleur, alors que la canopée, la végétation et les espaces verts aident à rafraîchir le quartier lors des chaudes journées d'été."
+  },
+  {
+    "id": 3,
+    "theme": "Quartier & Écologie",
+    "statement": "Installer un baril de récupération d'eau de pluie sur une gouttière aide uniquement à arroser les plantes, sans impact sur le réseau d'égout.",
+    "isTrue": false,
+    "fact": "En plus d'économiser l'eau potable pour l'arrosage, retenir l'eau de pluie sur place réduit le débit envoyé vers les égouts lors des fortes pluies."
+  },
+  {
+    "id": 1,
+    "theme": "Culture & Quotidien",
+    "statement": "Le mont Royal est un ancien volcan encore actif qui pourrait entrer en éruption.",
+    "isTrue": false,
+    "fact": "Le mont Royal est une colline d'origine ignée (intrusive) formée il y a environ 125 millions d'années : il n'est pas un volcan actif prêt à entrer en éruption."
+  },
+  {
+    "id": 2,
+    "theme": "Culture & Quotidien",
+    "statement": "Le réseau du métro de Montréal circule entièrement sur des pneus en caoutchouc, ce qui le rend plus silencieux et plus apte à gravir des pentes.",
+    "isTrue": true,
+    "fact": "Inspiré du métro de Paris, le métro de Montréal utilise des pneus sur voies de roulement, une caractéristique notable depuis son inauguration en 1966."
+  },
+  {
+    "id": 3,
+    "theme": "Culture & Quotidien",
+    "statement": "Les bibliothèques publiques de Montréal offrent uniquement des livres papier et ne prêtent aucun outil numérique ou objet.",
+    "isTrue": false,
+    "fact": "En plus des livres imprimés, plusieurs bibliothèques proposent des ressources numériques, des postes de travail, des ateliers ou même le prêt d'instruments, d'outils ou de jeux selon les points de service."
   }
 ]
