@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "theme": "Hiver",
+    "statement": "Quand le panneau indique le chargement de neige sur ma rue, je peux me stationner de l'autre côté tant que la déneigeuse n'est pas encore passée.",
+    "isTrue": false,
+    "fact": "Les règles d'interdiction s'appliquent selon l'horaire et le statut officiel de l'opération, pas seulement au moment où le camion est visible. Se garer au mauvais endroit ralentit le ramassage, laisse des amas de glace dangereux et expose à un remorquage ou une contravention."
+  },
+  {
+    "id": 2,
+    "theme": "Hiver",
+    "statement": "À Montréal, le déneigement des trottoirs et des pistes cyclables suit des priorités précises selon l'achalandage et la sécurité.",
+    "isTrue": true,
+    "fact": "Les grands axes piétons, zones scolaires, hôpitaux et réseaux cyclables structurants sont généralement dégagés en priorité avant certaines rues résidentielles secondaires."
+  },
+  {
+    "id": 3,
+    "theme": "Hiver",
+    "statement": "En plein hiver, aider un voisin âgé ou à mobilité réduite à dégager le bas de sa marche ou de son entrée évite souvent des chutes graves.",
+    "isTrue": true,
+    "fact": "Les bancs de neige durcis par les chasse-neige (« la bordure ») sont l'un des obstacles hivernaux les plus difficiles à franchir à pied."
+  },
+  {
+    "id": 1,
+    "theme": "Mobilité",
+    "statement": "Certaines pistes cyclables à Montréal restent entretenues et praticables à vélo tout l'hiver.",
+    "isTrue": true,
+    "fact": "Le Réseau express vélo (REV) et plusieurs axes cyclables sont déneigés en hiver, mais les pneus d'hiver ou à crampons et l'anticipation du verglas font toute la différence."
+  },
+  {
+    "id": 2,
+    "theme": "Mobilité",
+    "statement": "Dans une zone partagée ou à proximité d'une piste cyclable, ouvrir sa portière sans vérifier l'angle mort est sans grand risque si la voiture est arrêtée.",
+    "isTrue": false,
+    "fact": "L'« emportiérage » est l'un des accidents les plus fréquents et dangereux pour les cyclistes : un simple coup d'œil dans le rétroviseur ou avec la main opposée (« Dutch reach ») prévient l'accident."
+  },
+  {
+    "id": 1,
+    "theme": "Quartier & Écologie",
+    "statement": "Les ruelles vertes à Montréal sont créées uniquement par la Ville, sans implication des citoyens.",
+    "isTrue": false,
+    "fact": "Les ruelles vertes naissent surtout d'initiatives citoyennes de voisins qui s'organisent pour verdir, apaiser la circulation et créer un espace de vie collectif."
+  },
+  {
+    "id": 2,
+    "theme": "Quartier & Écologie",
+    "statement": "Acheter ses fruits, légumes ou produits frais dans un commerce ou marché de quartier réduit toujours les émissions de transport par rapport à un supermarché.",
+    "isTrue": false,
+    "fact": "La proximité géographique ne garantit pas à elle seule un bilan plus faible : la saisonnalité, le mode de culture et la logistique comptent aussi beaucoup, même si l'achat local soutient l'économie du quartier."
+  },
+  {
+    "id": 3,
+    "theme": "Quartier & Écologie",
+    "statement": "Déposer des sacs-poubelles ou des encombrants trop tôt sur le trottoir attire surtout les animaux et encombre le passage des piétons.",
+    "isTrue": true,
+    "fact": "Respecter les horaires de collecte limite les déchets éparpillés par les ratons laveurs, mouffettes ou corneilles et garde les trottoirs dégagés."
+  },
+  {
+    "id": 1,
+    "theme": "Culture & Quotidien",
+    "statement": "À Montréal, passer du français à l'anglais dès qu'on perçoit un accent ou une hésitation aide toujours la personne à s'intégrer.",
+    "isTrue": false,
+    "fact": "Même si l'intention est souvent polie ou pratique, basculer automatiquement vers l'anglais peut priver quelqu'un d'une occasion précieuse de pratiquer le français au quotidien."
+  },
+  {
+    "id": 2,
+    "theme": "Culture & Quotidien",
+    "statement": "La culture montréalaise se résume au centre-ville et aux festivals de l'été.",
+    "isTrue": false,
+    "fact": "Une grande partie de la vitalité culturelle de Montréal se vit à l'année dans les arrondissements : bibliothèques, maisons de la culture, petites salles, parcs, ruelles et cafés de quartier."
+  }
+]
