@@ -192,6 +192,7 @@ public class HelloApplication extends Application {
     }
 
     public void results() {
+        streakManager.recordAnsweredToday();
         HBox hBox = new HBox();
         hBox.setLayoutY(100);
         hBox.setPrefSize(WIDTH, HEIGHT);
@@ -204,7 +205,6 @@ public class HelloApplication extends Application {
     }
 
     public void options() {
-        streakManager.recordAnsweredToday();
         HBox hBox = new HBox();
         hBox.setPrefSize(WIDTH, HEIGHT);
         hBox.setAlignment(Pos.CENTER);
