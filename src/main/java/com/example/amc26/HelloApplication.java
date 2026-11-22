@@ -198,7 +198,7 @@ public class HelloApplication extends Application {
         hBox.setPrefSize(WIDTH, HEIGHT);
         hBox.setAlignment(Pos.CENTER);
 
-        Label label = new Label(controller.currentIndexQuestion+"/"+controller.NB_QUESTIONS);
+        Label label = new Label(controller.nbCorrectAnswers+"/"+controller.NB_QUESTIONS);
 
         hBox.getChildren().addAll(label);
         pane.getChildren().add(hBox);
