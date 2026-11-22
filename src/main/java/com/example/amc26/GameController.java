@@ -4,8 +4,10 @@ public class GameController {
     public final int NB_QUESTIONS = 12;
     public Question currentQuestion;
     public Question.qst currentQst;
+    public HelloApplication vue;
 
-    public int currentIndexQuestion = 0;
+    public int currentIndexQuestion;
+    public int nbCorrectAnswers = 0;
 
     public String getTheme() {
         return currentQst.theme();
@@ -31,11 +33,23 @@ public class GameController {
         return currentQst.fact();
     }
 
-    public GameController() {
+    public GameController(HelloApplication vue) {
         currentQuestion = new Question();
+        currentIndexQuestion = 1;
+        this.vue = vue;
     }
 
     public void nextQuestion() {
         currentQst = currentQuestion.getRandomQst();
+        currentIndexQuestion++;
+        if (currentIndexQuestion > NB_QUESTIONS) {
+            vue.loadNewPlan(Plan.RESULTS);
+        }
+    }
+
+    public void verifyAnswer(boolean buttonValue) {
+        if (buttonValue == getTruthValue()) {
+            nbCorrectAnswers++;
+        }
     }
 }

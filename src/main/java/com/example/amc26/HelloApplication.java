@@ -54,6 +54,7 @@ public class HelloApplication extends Application {
         switch (plan) {
             case ACCUEIL -> accueil();
             case GAMEPLAY -> questionMenu();
+            case RESULTS -> results();
             case OPTIONS -> options();
         }
     }
@@ -111,14 +112,14 @@ public class HelloApplication extends Application {
         String theme = controller.getTheme();
         Image background = getRightBackground(theme);
 
-        BackgroundImage backgroundImage = new BackgroundImage(background,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(100, 100, true, true, false, true)
-        );
+            BackgroundImage backgroundImage = new BackgroundImage(background,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    new BackgroundSize(100, 100, true, true, false, true)
+            );
 
-        pane.setBackground(new Background(backgroundImage));
+            pane.setBackground(new Background(backgroundImage));
 
         Button button = new Button("<-");
         button.setOnAction(event -> {
@@ -146,10 +147,10 @@ public class HelloApplication extends Application {
         hBoxStatement.getChildren().add(lStatement);
         qstPane.getChildren().add(hBoxStatement);
 
-        HBox hBoxBtns = new HBox(50);
-        hBoxBtns.setLayoutY(250);
-        hBoxBtns.setPrefWidth(WIDTH);
-        hBoxBtns.setAlignment(Pos.CENTER);
+            HBox hBoxBtns = new HBox(50);
+            hBoxBtns.setLayoutY(250);
+            hBoxBtns.setPrefWidth(WIDTH);
+            hBoxBtns.setAlignment(Pos.CENTER);
             Button btnVrai = new Button("Vrai");
             btnVrai.setPrefSize(100, 75);
             Button btnMythe = new Button("Mythe");
@@ -160,13 +161,14 @@ public class HelloApplication extends Application {
             btnMythe.setOnAction(event -> {
                 clickButton(hBoxBtns, btnVrai, btnMythe, lStatement, false);
             });
-        hBoxBtns.getChildren().addAll(btnVrai, btnMythe);
-        qstPane.getChildren().add(hBoxBtns);
+            hBoxBtns.getChildren().addAll(btnVrai, btnMythe);
+            qstPane.getChildren().add(hBoxBtns);
 
         pane.getChildren().addAll(button, qstPane);
     }
 
     private void clickButton(HBox hBoxBtns, Button btnVrai, Button btnMythe, Label lStatement, boolean buttonValue) {
+        controller.verifyAnswer(buttonValue);
         hBoxBtns.getChildren().removeAll(btnVrai, btnMythe);
         VBox vBox = new VBox(10);
             Label lTruth = new Label(controller.getTruth());
@@ -184,6 +186,18 @@ public class HelloApplication extends Application {
             });
         vBox.getChildren().addAll(lTruth, lStatement, btnContinue);
         hBoxBtns.getChildren().add(vBox);
+    }
+
+    public void results() {
+        HBox hBox = new HBox();
+        hBox.setLayoutY(100);
+        hBox.setPrefSize(WIDTH, HEIGHT);
+        hBox.setAlignment(Pos.CENTER);
+
+        Label label = new Label(controller.currentIndexQuestion+"/"+controller.NB_QUESTIONS);
+
+        hBox.getChildren().addAll(label);
+        pane.getChildren().add(hBox);
     }
 
     public void options() {
