@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 public class Question {
     private Map<String, List<qst>> qstMap;
     private int currentIndexTheme = 0;
+    private String currentTheme;
+    private qst currentQst;
 
     public record qst(int id, String theme, String statement, boolean isTrue, String fact) {}
 
@@ -72,10 +74,20 @@ public class Question {
 
         if (!themes.isEmpty()) {
             currentIndexTheme = new Random().nextInt(themes.size());
-            String chosenTheme = themes.get(currentIndexTheme);
-            List<qst> questionsForTheme = qstMap.get(currentIndexTheme);
+            currentTheme = themes.get(currentIndexTheme);
 
-            return chosenTheme;
+            return currentTheme;
+        } else {
+            return "No theme for now";
+        }
+    }
+
+    public String getRandomStatement() {
+        if (!qstMap.get(currentTheme).isEmpty()) {
+            int index = new Random().nextInt(qstMap.get(currentTheme).size());
+            currentQst = qstMap.get(currentTheme).get(index);
+
+            return currentQst.statement;
         } else {
             return "No theme for now";
         }
