@@ -89,6 +89,33 @@ public class HelloApplication extends Application {
         pane.getChildren().remove(qstPane);
         qstPane.getChildren().clear();
 
+        String theme = controller.getTheme();
+        Image background = null;
+
+        switch (theme){
+            case "Hiver":
+                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                break;
+            case "Mobilité":
+                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                break;
+            case "Quartier & Écologie":
+                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                break;
+            case "Culture & Quotidien":
+                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                break;
+        }
+
+        BackgroundImage backgroundImage = new BackgroundImage(background,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(100, 100, true, true, false, true)
+        );
+
+        pane.setBackground(new Background(backgroundImage));
+
         Button button = new Button("<-");
         button.setOnAction(event -> {
             loadNewPlan(Plan.ACCUEIL);
