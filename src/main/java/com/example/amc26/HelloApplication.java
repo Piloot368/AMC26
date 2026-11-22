@@ -7,12 +7,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -56,17 +56,32 @@ public class HelloApplication extends Application {
         hBox.setPrefSize(WIDTH, HEIGHT);
         hBox.setAlignment(Pos.CENTER);
 
-            VBox vBox = new VBox();
-            vBox.setPrefSize(WIDTH, HEIGHT);
-            vBox.setAlignment(Pos.CENTER);
+        Image streakImage = new Image(getClass().getResource("/images/streakIcon.png").toExternalForm());
+        ImageView imageView = new ImageView(streakImage);
+        imageView.setFitHeight(64);
+        imageView.setFitWidth(64);
 
-                Button button = new Button("Lancer le quiz !");
-                button.setOnAction(event -> {
-                    loadNewPlan(Plan.GAMEPLAY);
-                });
+        Image menuBackground = new Image(getClass().getResource("/images/menuBackground.jpg").toExternalForm());
+        BackgroundImage backgroundImage = new BackgroundImage(menuBackground,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(100, 100, true, true, false, true)
+        );
 
-            vBox.getChildren().add(button);
-        hBox.getChildren().add(vBox);
+        VBox vBox = new VBox();
+        vBox.setBackground(new Background(backgroundImage));
+
+        vBox.setPrefSize(WIDTH, HEIGHT);
+        vBox.setAlignment(Pos.CENTER);
+
+        Button button = new Button("Lancer le quiz !");
+        button.setOnAction(event -> {
+            loadNewPlan(Plan.GAMEPLAY);
+        });
+
+        vBox.getChildren().addAll(imageView, button);
+        hBox.getChildren().addAll(vBox);
         pane.getChildren().add(hBox);
     }
 
