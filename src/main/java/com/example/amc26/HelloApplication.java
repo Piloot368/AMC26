@@ -1,5 +1,6 @@
 package com.example.amc26;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +15,14 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+
+            }
+        }
+        timer.start();
+
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
