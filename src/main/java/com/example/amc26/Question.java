@@ -13,7 +13,7 @@ public class Question {
     private Map<String, List<qst>> qstMap;
     private int currentIndexTheme = 0;
 
-    record qst(int id, String theme, String statement, boolean isTrue, String fact) {}
+    public record qst(int id, String theme, String statement, boolean isTrue, String fact) {}
 
     public static void main(String[] args) {
         Gson gson = new Gson();
