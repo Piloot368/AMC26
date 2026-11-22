@@ -2,19 +2,18 @@ package com.example.amc26;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -71,6 +70,7 @@ public class HelloApplication extends Application {
     }
 
     public void QuestionMenu() {
+        controller.nextQuestion();
         pane.getChildren().remove(qstPane);
         qstPane.getChildren().clear();
 
@@ -93,9 +93,9 @@ public class HelloApplication extends Application {
         hBoxStatement.setLayoutY(100);
         hBoxStatement.setPrefWidth(WIDTH);
         hBoxStatement.setAlignment(Pos.CENTER);
-            Label lStatement = new Label(controller.getQuestion());
+            Label lStatement = new Label(controller.getStatement());
             lStatement.setFont(Font.font(12));
-            lStatement.setMaxWidth(WIDTH-20);
+            lStatement.setMaxWidth(WIDTH-40);
             lStatement.setWrapText(true);
         hBoxStatement.getChildren().add(lStatement);
         qstPane.getChildren().add(hBoxStatement);
@@ -106,11 +106,22 @@ public class HelloApplication extends Application {
         hBoxBtns.setAlignment(Pos.CENTER);
             Button btnVrai = new Button("Vrai");
             btnVrai.setPrefSize(100, 75);
-            btnVrai.setOnAction(event -> {
-                ///TODO
-            });
             Button btnMythe = new Button("Mythe");
             btnMythe.setPrefSize(100, 75);
+            btnVrai.setOnAction(event -> {
+                hBoxBtns.getChildren().removeAll(btnVrai, btnMythe);
+                VBox vBox = new VBox(10);
+                    Label lTruth = new Label(controller.getTruth());
+                    lTruth.setFont(Font.font(20));
+                    lTruth.setTextFill(controller.getTruthValue()? Color.GREEN:Color.RED);
+
+                    Label lFact = new Label(controller.getFact());
+                    lFact.setFont(Font.font(12));
+                    lFact.setMaxWidth(WIDTH-40);
+                    lFact.setWrapText(true);
+                vBox.getChildren().addAll(lTruth, lStatement);
+                hBoxBtns.getChildren().add(vBox);
+            });
             btnMythe.setOnAction(event -> {
                 ///TODO
             });

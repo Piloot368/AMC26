@@ -69,27 +69,18 @@ public class Question {
         }
     }
 
-    public String getRandomTheme() {
+    public qst getRandomQst() {
         List<String> themes = List.copyOf(qstMap.keySet());
 
         if (!themes.isEmpty()) {
             currentIndexTheme = new Random().nextInt(themes.size());
             currentTheme = themes.get(currentIndexTheme);
-
-            return currentTheme;
-        } else {
-            return "No theme for now";
-        }
-    }
-
-    public String getRandomStatement() {
-        if (!qstMap.get(currentTheme).isEmpty()) {
             int index = new Random().nextInt(qstMap.get(currentTheme).size());
             currentQst = qstMap.get(currentTheme).get(index);
 
-            return currentQst.statement;
+            return currentQst;
         } else {
-            return "No theme for now";
+            return null;
         }
     }
 }
