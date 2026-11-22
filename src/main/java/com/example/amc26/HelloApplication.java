@@ -17,6 +17,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class HelloApplication extends Application {
     public final double WIDTH = 300, HEIGHT = 533;
@@ -24,11 +26,13 @@ public class HelloApplication extends Application {
     public Scene scene = new Scene(pane, WIDTH, HEIGHT);
     public Pane qstPane = new Pane();
     public GameController controller = new GameController();
+    public StreakManager streakManager = new StreakManager(Path.of("src/main/resources/infos.json"));
 
     public Plan currentPlan = Plan.ACCUEIL;
 
     @Override
     public void start(Stage stage) throws IOException {
+        streakManager.checkStreakOnLaunch();
         accueil();
         AnimationTimer timer = new AnimationTimer() {
             @Override
@@ -45,6 +49,7 @@ public class HelloApplication extends Application {
 
     public void loadNewPlan(Plan plan) {
         pane.getChildren().clear();
+        pane.setBackground(null);
         currentPlan = plan;
         switch (plan) {
             case ACCUEIL -> accueil();
@@ -58,6 +63,11 @@ public class HelloApplication extends Application {
         hBox.setPrefSize(WIDTH, HEIGHT);
         hBox.setAlignment(Pos.CENTER);
 
+        HBox streakBox = new HBox(10);
+        streakBox.setPrefSize(Integer.MIN_VALUE, Integer.MIN_VALUE);
+        streakBox.setAlignment(Pos.CENTER);
+        Label streak = new Label("" + streakManager.getStreakCount());
+        streak.setTextFill(Color.CHOCOLATE);
         Image streakImage = new Image(getClass().getResource("/images/streakIcon.png").toExternalForm());
         ImageView imageView = new ImageView(streakImage);
         imageView.setFitHeight(64);
@@ -87,33 +97,19 @@ public class HelloApplication extends Application {
             loadNewPlan(Plan.OPTIONS);
         });
 
-        vBox.getChildren().addAll(imageView, btnGameplay, btnOptions);
+        streakBox.getChildren().addAll(streak, imageView);
+        vBox.getChildren().addAll(streakBox, btnGameplay, btnOptions);
         hBox.getChildren().addAll(vBox);
         pane.getChildren().add(hBox);
     }
 
     public void questionMenu() {
         controller.nextQuestion();
-        pane.getChildren().remove(qstPane);
+        pane.getChildren().clear();
         qstPane.getChildren().clear();
 
         String theme = controller.getTheme();
-        Image background = null;
-
-        switch (theme){
-            case "Hiver":
-                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
-                break;
-            case "Mobilité":
-                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
-                break;
-            case "Quartier & Écologie":
-                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
-                break;
-            case "Culture & Quotidien":
-                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
-                break;
-        }
+        Image background = getRightBackground(theme);
 
         BackgroundImage backgroundImage = new BackgroundImage(background,
                 BackgroundRepeat.NO_REPEAT,
@@ -128,14 +124,13 @@ public class HelloApplication extends Application {
         button.setOnAction(event -> {
             loadNewPlan(Plan.ACCUEIL);
         });
-        pane.getChildren().add(button);
 
         HBox hBoxTheme = new HBox();
         hBoxTheme.setLayoutY(50);
         hBoxTheme.setPrefWidth(WIDTH);
         hBoxTheme.setAlignment(Pos.CENTER);
-            Label lTheme = new Label(controller.getTheme());
-            lTheme.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        Label lTheme = new Label(theme);
+        lTheme.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         hBoxTheme.getChildren().add(lTheme);
         qstPane.getChildren().add(hBoxTheme);
 
@@ -143,10 +138,11 @@ public class HelloApplication extends Application {
         hBoxStatement.setLayoutY(100);
         hBoxStatement.setPrefWidth(WIDTH);
         hBoxStatement.setAlignment(Pos.CENTER);
-            Label lStatement = new Label(controller.getStatement());
-            lStatement.setFont(Font.font(12));
-            lStatement.setMaxWidth(WIDTH-40);
-            lStatement.setWrapText(true);
+        Label lStatement = new Label(controller.getStatement());
+        lStatement.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 12));
+        lStatement.setMaxWidth(WIDTH-40);
+        lStatement.setWrapText(true);
+        lStatement.setTextFill(Color.CHOCOLATE);
         hBoxStatement.getChildren().add(lStatement);
         qstPane.getChildren().add(hBoxStatement);
 
@@ -167,7 +163,7 @@ public class HelloApplication extends Application {
         hBoxBtns.getChildren().addAll(btnVrai, btnMythe);
         qstPane.getChildren().add(hBoxBtns);
 
-        pane.getChildren().add(qstPane);
+        pane.getChildren().addAll(button, qstPane);
     }
 
     private void clickButton(HBox hBoxBtns, Button btnVrai, Button btnMythe, Label lStatement, boolean buttonValue) {
@@ -209,5 +205,28 @@ public class HelloApplication extends Application {
         vBox.getChildren().addAll(btnImage);
         hBox.getChildren().addAll(vBox);
         pane.getChildren().add(hBox);
+    }
+
+    public Image getRightBackground(String theme){
+        Image background = null;
+
+        System.out.println(theme);
+
+        switch (theme){
+            case "Hiver":
+                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                break;
+            case "Mobilité":
+                background = new Image(getClass().getResource("/images/mobiliteBackground.jpg").toExternalForm());
+                break;
+            case "Quartier & Écologie":
+                background = new Image(getClass().getResource("/images/quartierBackground.jpg").toExternalForm());
+                break;
+            case "Culture & Quotidien":
+                background = new Image(getClass().getResource("/images/cultureBackground.jpg").toExternalForm());
+                break;
+        }
+
+        return background;
     }
 }
