@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
     public Pane pane = new Pane();
     public Scene scene = new Scene(pane, WIDTH, HEIGHT);
     public Pane qstPane = new Pane();
-    public GameController controller = new GameController();
+    public GameController controller = new GameController(this);
 
     public Plan currentPlan = Plan.ACCUEIL;
 
@@ -49,6 +49,7 @@ public class HelloApplication extends Application {
         switch (plan) {
             case ACCUEIL -> accueil();
             case GAMEPLAY -> questionMenu();
+            case RESULTS -> results();
             case OPTIONS -> options();
         }
     }
@@ -94,66 +95,67 @@ public class HelloApplication extends Application {
 
     public void questionMenu() {
         controller.nextQuestion();
-        pane.getChildren().remove(qstPane);
-        qstPane.getChildren().clear();
+        if (currentPlan == Plan.GAMEPLAY) {
+            pane.getChildren().remove(qstPane);
+            qstPane.getChildren().clear();
 
-        String theme = controller.getTheme();
-        Image background = null;
+            String theme = controller.getTheme();
+            Image background = null;
 
-        switch (theme){
-            case "Hiver":
-                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
-                break;
-            case "Mobilité":
-                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
-                break;
-            case "Quartier & Écologie":
-                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
-                break;
-            case "Culture & Quotidien":
-                background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
-                break;
-        }
+            switch (theme) {
+                case "Hiver":
+                    background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                    break;
+                case "Mobilité":
+                    background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                    break;
+                case "Quartier & Écologie":
+                    background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                    break;
+                case "Culture & Quotidien":
+                    background = new Image(getClass().getResource("/images/hiverBackground.jpg").toExternalForm());
+                    break;
+            }
 
-        BackgroundImage backgroundImage = new BackgroundImage(background,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(100, 100, true, true, false, true)
-        );
+            BackgroundImage backgroundImage = new BackgroundImage(background,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    new BackgroundSize(100, 100, true, true, false, true)
+            );
 
-        pane.setBackground(new Background(backgroundImage));
+            pane.setBackground(new Background(backgroundImage));
 
-        Button button = new Button("<-");
-        button.setOnAction(event -> {
-            loadNewPlan(Plan.ACCUEIL);
-        });
-        pane.getChildren().add(button);
+            Button button = new Button("<-");
+            button.setOnAction(event -> {
+                loadNewPlan(Plan.ACCUEIL);
+            });
+            pane.getChildren().add(button);
 
-        HBox hBoxTheme = new HBox();
-        hBoxTheme.setLayoutY(50);
-        hBoxTheme.setPrefWidth(WIDTH);
-        hBoxTheme.setAlignment(Pos.CENTER);
+            HBox hBoxTheme = new HBox();
+            hBoxTheme.setLayoutY(50);
+            hBoxTheme.setPrefWidth(WIDTH);
+            hBoxTheme.setAlignment(Pos.CENTER);
             Label lTheme = new Label(controller.getTheme());
             lTheme.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        hBoxTheme.getChildren().add(lTheme);
-        qstPane.getChildren().add(hBoxTheme);
+            hBoxTheme.getChildren().add(lTheme);
+            qstPane.getChildren().add(hBoxTheme);
 
-        HBox hBoxStatement = new HBox();
-        hBoxStatement.setLayoutY(100);
-        hBoxStatement.setPrefWidth(WIDTH);
-        hBoxStatement.setAlignment(Pos.CENTER);
+            HBox hBoxStatement = new HBox();
+            hBoxStatement.setLayoutY(100);
+            hBoxStatement.setPrefWidth(WIDTH);
+            hBoxStatement.setAlignment(Pos.CENTER);
             Label lStatement = new Label(controller.getStatement());
             lStatement.setFont(Font.font(12));
-            lStatement.setMaxWidth(WIDTH-40);
+            lStatement.setMaxWidth(WIDTH - 40);
             lStatement.setWrapText(true);
-        hBoxStatement.getChildren().add(lStatement);
-        qstPane.getChildren().add(hBoxStatement);
+            hBoxStatement.getChildren().add(lStatement);
+            qstPane.getChildren().add(hBoxStatement);
 
-        HBox hBoxBtns = new HBox(50);
-        hBoxBtns.setLayoutY(250);
-        hBoxBtns.setPrefWidth(WIDTH);
-        hBoxBtns.setAlignment(Pos.CENTER);
+            HBox hBoxBtns = new HBox(50);
+            hBoxBtns.setLayoutY(250);
+            hBoxBtns.setPrefWidth(WIDTH);
+            hBoxBtns.setAlignment(Pos.CENTER);
             Button btnVrai = new Button("Vrai");
             btnVrai.setPrefSize(100, 75);
             Button btnMythe = new Button("Mythe");
@@ -164,13 +166,15 @@ public class HelloApplication extends Application {
             btnMythe.setOnAction(event -> {
                 clickButton(hBoxBtns, btnVrai, btnMythe, lStatement, false);
             });
-        hBoxBtns.getChildren().addAll(btnVrai, btnMythe);
-        qstPane.getChildren().add(hBoxBtns);
+            hBoxBtns.getChildren().addAll(btnVrai, btnMythe);
+            qstPane.getChildren().add(hBoxBtns);
 
-        pane.getChildren().add(qstPane);
+            pane.getChildren().add(qstPane);
+        }
     }
 
     private void clickButton(HBox hBoxBtns, Button btnVrai, Button btnMythe, Label lStatement, boolean buttonValue) {
+        controller.verifyAnswer(buttonValue);
         hBoxBtns.getChildren().removeAll(btnVrai, btnMythe);
         VBox vBox = new VBox(10);
             Label lTruth = new Label(controller.getTruth());
@@ -188,6 +192,18 @@ public class HelloApplication extends Application {
             });
         vBox.getChildren().addAll(lTruth, lStatement, btnContinue);
         hBoxBtns.getChildren().add(vBox);
+    }
+
+    public void results() {
+        HBox hBox = new HBox();
+        hBox.setLayoutY(100);
+        hBox.setPrefSize(WIDTH, HEIGHT);
+        hBox.setAlignment(Pos.CENTER);
+
+        Label label = new Label(controller.currentIndexQuestion+"/"+controller.NB_QUESTIONS);
+
+        hBox.getChildren().addAll(label);
+        pane.getChildren().add(hBox);
     }
 
     public void options() {
