@@ -49,6 +49,7 @@ public class HelloApplication extends Application {
         switch (plan) {
             case ACCUEIL -> accueil();
             case GAMEPLAY -> questionMenu();
+            case OPTIONS -> options();
         }
     }
 
@@ -70,18 +71,23 @@ public class HelloApplication extends Application {
                 new BackgroundSize(100, 100, true, true, false, true)
         );
 
-        VBox vBox = new VBox();
+        VBox vBox = new VBox(5);
         vBox.setBackground(new Background(backgroundImage));
 
         vBox.setPrefSize(WIDTH, HEIGHT);
         vBox.setAlignment(Pos.CENTER);
 
-        Button button = new Button("Lancer le quiz !");
-        button.setOnAction(event -> {
+        Button btnGameplay = new Button("Lancer le quiz !");
+        btnGameplay.setOnAction(event -> {
             loadNewPlan(Plan.GAMEPLAY);
         });
 
-        vBox.getChildren().addAll(imageView, button);
+        Button btnOptions = new Button("Options");
+        btnOptions.setOnAction(event -> {
+            loadNewPlan(Plan.OPTIONS);
+        });
+
+        vBox.getChildren().addAll(imageView, btnGameplay, btnOptions);
         hBox.getChildren().addAll(vBox);
         pane.getChildren().add(hBox);
     }
@@ -182,5 +188,26 @@ public class HelloApplication extends Application {
             });
         vBox.getChildren().addAll(lTruth, lStatement, btnContinue);
         hBoxBtns.getChildren().add(vBox);
+    }
+
+    public void options() {
+        HBox hBox = new HBox();
+        hBox.setPrefSize(WIDTH, HEIGHT);
+        hBox.setAlignment(Pos.CENTER);
+
+        VBox vBox = new VBox(5);
+        //vBox.setBackground(new Background(backgroundImage));
+
+        vBox.setPrefSize(WIDTH, HEIGHT);
+        vBox.setAlignment(Pos.CENTER);
+
+        Button btnImage = new Button("Put an image as the background");
+        btnImage.setOnAction(event -> {
+            //Image => be chosen by the user
+        });
+
+        vBox.getChildren().addAll(btnImage);
+        hBox.getChildren().addAll(vBox);
+        pane.getChildren().add(hBox);
     }
 }
