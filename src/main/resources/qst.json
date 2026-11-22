@@ -49,28 +49,28 @@
     "fact": "Les ruelles vertes naissent surtout d'initiatives citoyennes de voisins qui s'organisent pour verdir, apaiser la circulation et créer un espace de vie collectif."
   },
   {
-    "id": 2,
+    "id": 1,
     "theme": "Quartier & Écologie",
     "statement": "Acheter ses fruits, légumes ou produits frais dans un commerce ou marché de quartier réduit toujours les émissions de transport par rapport à un supermarché.",
     "isTrue": false,
     "fact": "La proximité géographique ne garantit pas à elle seule un bilan plus faible : la saisonnalité, le mode de culture et la logistique comptent aussi beaucoup, même si l'achat local soutient l'économie du quartier."
   },
   {
-    "id": 3,
+    "id": 2,
     "theme": "Quartier & Écologie",
     "statement": "Déposer des sacs-poubelles ou des encombrants trop tôt sur le trottoir attire surtout les animaux et encombre le passage des piétons.",
     "isTrue": true,
     "fact": "Respecter les horaires de collecte limite les déchets éparpillés par les ratons laveurs, mouffettes ou corneilles et garde les trottoirs dégagés."
   },
   {
-    "id": 1,
+    "id": 3,
     "theme": "Culture & Quotidien",
     "statement": "À Montréal, passer du français à l'anglais dès qu'on perçoit un accent ou une hésitation aide toujours la personne à s'intégrer.",
     "isTrue": false,
     "fact": "Même si l'intention est souvent polie ou pratique, basculer automatiquement vers l'anglais peut priver quelqu'un d'une occasion précieuse de pratiquer le français au quotidien."
   },
   {
-    "id": 2,
+    "id": 1,
     "theme": "Culture & Quotidien",
     "statement": "La culture montréalaise se résume au centre-ville et aux festivals de l'été.",
     "isTrue": false,
