@@ -29,7 +29,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Accueil();
+        accueil();
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -47,12 +47,12 @@ public class HelloApplication extends Application {
         pane.getChildren().clear();
         currentPlan = plan;
         switch (plan) {
-            case ACCUEIL -> Accueil();
-            case GAMEPLAY -> QuestionMenu();
+            case ACCUEIL -> accueil();
+            case GAMEPLAY -> questionMenu();
         }
     }
 
-    public void Accueil() {
+    public void accueil() {
         HBox hBox = new HBox();
         hBox.setPrefSize(WIDTH, HEIGHT);
         hBox.setAlignment(Pos.CENTER);
@@ -86,7 +86,7 @@ public class HelloApplication extends Application {
         pane.getChildren().add(hBox);
     }
 
-    public void QuestionMenu() {
+    public void questionMenu() {
         controller.nextQuestion();
         pane.getChildren().remove(qstPane);
         qstPane.getChildren().clear();
@@ -153,25 +153,34 @@ public class HelloApplication extends Application {
             Button btnMythe = new Button("Mythe");
             btnMythe.setPrefSize(100, 75);
             btnVrai.setOnAction(event -> {
-                hBoxBtns.getChildren().removeAll(btnVrai, btnMythe);
-                VBox vBox = new VBox(10);
-                    Label lTruth = new Label(controller.getTruth());
-                    lTruth.setFont(Font.font(20));
-                    lTruth.setTextFill(controller.getTruthValue()? Color.GREEN:Color.RED);
-
-                    Label lFact = new Label(controller.getFact());
-                    lFact.setFont(Font.font(12));
-                    lFact.setMaxWidth(WIDTH-40);
-                    lFact.setWrapText(true);
-                vBox.getChildren().addAll(lTruth, lStatement);
-                hBoxBtns.getChildren().add(vBox);
+                clickButton(hBoxBtns, btnVrai, btnMythe, lStatement, true);
             });
             btnMythe.setOnAction(event -> {
-                ///TODO
+                clickButton(hBoxBtns, btnVrai, btnMythe, lStatement, false);
             });
         hBoxBtns.getChildren().addAll(btnVrai, btnMythe);
         qstPane.getChildren().add(hBoxBtns);
 
         pane.getChildren().add(qstPane);
+    }
+
+    private void clickButton(HBox hBoxBtns, Button btnVrai, Button btnMythe, Label lStatement, boolean buttonValue) {
+        hBoxBtns.getChildren().removeAll(btnVrai, btnMythe);
+        VBox vBox = new VBox(10);
+            Label lTruth = new Label(controller.getTruth());
+            lTruth.setFont(Font.font(20));
+            lTruth.setTextFill(controller.getTruthValue()? Color.GREEN:Color.RED);
+
+            Label lFact = new Label(controller.getFact());
+            lFact.setFont(Font.font(12));
+            lFact.setMaxWidth(WIDTH-40);
+            lFact.setWrapText(true);
+
+            Button btnContinue = new Button("Continue");
+            btnContinue.setOnAction(event -> {
+                questionMenu();
+            });
+        vBox.getChildren().addAll(lTruth, lStatement, btnContinue);
+        hBoxBtns.getChildren().add(vBox);
     }
 }
