@@ -1,6 +1,6 @@
-package com.example.amc26;
+package com.example.amc26
 
-public enum Plan {
+enum class Plan {
     ACCUEIL,
     GAMEPLAY,
     RESULTS,
